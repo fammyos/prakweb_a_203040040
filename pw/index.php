@@ -22,7 +22,7 @@
 <div class="container ">
     <div class="card mt-5 bg-warning text-light">
         <div class="card-body text-light">
-            <h1 class="display-4 text-center text-dark mb-3"><p style="font-style: calibri;">Daftar Buku</p></h1>
+            <h1 class="display-4 text-center text-dark mb-3"><p style="font-style: calibri;">Daftar Buku Informatika</p></h1>
 
             <table class="table table-bordered table-striped table-hover text-center bg-light" >
                 <tr>
