@@ -1,58 +1,78 @@
 <?php
-  require 'functions.php' ;
+//koneksi
+require 'function.php';
 
-  // tampung ke variabel mahasiswa
-  $buku = query("SELECT * FROM buku");
+$Buku = query("SELECT * FROM buku");
+
+//isi tabel
+
+
+
+
+
+
+
 ?>
 
+
+
+
+
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun&display=swap" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>Daftar Buku</title>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
-</head>
-<body>
-<div class="container ">
-    <div class="card mt-5 bg-warning text-light">
-        <div class="card-body text-light">
-            <h1 class="display-4 text-center text-dark mb-3"><p style="font-style: calibri;">Daftar Buku Informatika</p></h1>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
 
-            <table class="table table-bordered table-striped table-hover text-center bg-light" >
-                <tr>
-                    <th>No</th>
-                    <th>Nama Buku</th>
-                    <th>Pengarang</th>
-                    <th>Gambar</th>
-                </tr>
+    <body>
 
-                <?php if(empty($buku)) : ?>
-                <tr>
-                    <td colspan="4"><p style="color: red; font-style: italic;">Data Buku tidak ditemukan!</p></td>
-                </tr>
-                <?php endif; ?>
 
-                <?php $i = 1; 
-                foreach($buku as $bk) : ?>
-                    <tr>
-                        <td><?= $i++; ?></td>
-                        <td><?= $bk['nama_buku']; ?></td>
-                        <td><?= $bk['pengarang']; ?></td>
-                        <td><img src="buku/<?= $bk['gambar'] ?>" width="100"></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
+   
+    <div class="container">
 
+    <table>
+        <thead>
+          <tr>
+              <th>Nama Buku</th>
+              <th>Pengarang</th>
+              <th>Gambar</th>
+              <th >Opsi</th>
+          </tr>
+        </thead>
+        <?php foreach($Buku as $bk) : ?>
+        <tbody>
+          
+          <tr>
+         
+            <td><?= $bk["nama_buku"]  ?></td>
+            <td><?= $bk["pengarang"]  ?></td>
+            <td> <img src="img/<?= $bk["gambar"] ?>" alt="" width="100px" height="100px"></td>
+            <td>
+            <a href="ubah.php?id=<?= $bk['id_buku']?>" class="waves-effect waves-light btn purple darkten-3 center"><i class="material-icons left">create</i>Change</a>
+            <a href="hapus.php?id=<?= $bk['id_buku']?>" onclick="return confirm('Delete the data?')" class="waves-effect waves-light btn blue lighten-3"><i class="material-icons left">delete</i>Delete</a>
+            
+         </td>
+          </tr>
+          
+        </tbody>
+
+        
+        <?php endforeach;?>
+      </table>
+
+      <div class="button center">
+      <a href="tambah.php" class="waves-effect waves-light btn yellow darkten-3 "><i class="material-icons left">add</i>Add data</a>
       </div>
     </div>
-</div>
-
-<script src="js/script.js"></script>
-</body>
-</html>
+     
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+  </html>
