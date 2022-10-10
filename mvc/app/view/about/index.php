@@ -7,7 +7,10 @@
     <title>Halaman About</title>
 </head>
 <body>
-    <h1>About Me</h1>
+    <div class="container">
+    <h1 class="mt-4">About Me</h1>
+    <img src="" alt="">
     <p>Halo, nama saya <?= $data['nama'] ; ?>, umur <?= $data['umur'] ; ?> tahun, saya adalah seorang <?= $data['pekerjaan'] ; ?>.</p>
+    </div>
 </body>
 </html>
